@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor's Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #111827, #4c1d95, #000000); /* Gradient from gray-900 to purple-900 to black */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            padding: 8rem 0;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header div {
+            max-width: 80%;
+            margin: auto;
+        }
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #60a5fa, #8b5cf6); /* Gradient from blue-400 to purple-400 */
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            letter-spacing: -0.05em;
+        }
+        p {
+            font-size: 1.25rem;
+            color: #d1d5db; /* gray-300 */
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* rounded-full */
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .red-button {
+            background-color: #dc2626; /* red-600 */
+            color: white;
+        }
+        .red-button:hover {
+            background-color: #b91c1c; /* red-700 */
+        }
+        .blue-button {
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+        }
+        .blue-button:hover {
+            background-color: #1e40af; /* blue-700 */
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* border-white/10 */
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+             box-shadow: 0 20px 25px -5px rgba(167, 139, 250, 0.2), 0 8px 10px -6px rgba(167, 139, 250, 0.1); /* hover:shadow-purple-500/20 */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 70rem; /* container mx-auto */
+            padding: 0 1rem; /* px-4 */
+        }
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+            }
+        }
+        .card-header {
+            margin-bottom: 1.5rem;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card-description {
+            color: #d1d5db; /* text-gray-300 */
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .card-content p{
+            color: #e5e7eb;
+            margin-bottom: 1rem;
+        }
+
+        .card-content ul {
+            list-style: disc;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+            line-height: 1.7;
+        }
+        .outline-button {
+            background-color: transparent;
+            border: 1px solid;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .blue-outline {
+            border-color: rgba(96, 165, 250, 0.5); /* blue-500/30 */
+            color: #60a5fa; /* blue-400 */
+        }
+        .blue-outline:hover {
+            background-color: rgba(96, 165, 250, 0.2); /* hover:bg-blue-500/20 */
+            color: #3b82f6; /* hover:text-blue-300 */
+        }
+        .purple-outline {
+            border-color:  rgba(167, 139, 250, 0.3); /* purple-500/30 */
+            color: #a855f7; /* purple-400 */
+        }
+        .purple-outline:hover {
+            background-color:  rgba(167, 139, 250, 0.2); /* hover:bg-purple-500/20 */
+            color: #9333ea; /* hover:text-purple-300 */
+        }
+        .green-outline {
+            border-color: rgba(52, 211, 153, 0.3); /* green-500/30 */
+            color: #34d399; /* green-400 */
+        }
+        .green-outline:hover {
+            background-color: rgba(52, 211, 153, 0.2); /* hover:bg-green-500/20 */
+            color: #10b981; /* hover:text-green-300 */
+        }
+
+        .yellow-outline {
+            border-color: rgba(252, 211, 77, 0.3); /* yellow-500/30 */
+            color: #fcd34d; /* yellow-400 */
+        }
+
+        .yellow-outline:hover {
+            background-color: rgba(252, 211, 77, 0.2); /* hover:bg-yellow-500/20 */
+            color: #f59e0b; /* hover:text-yellow-300 */
+        }
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: #9ca3af; /* text-gray-400 */
+            font-size: 0.9rem;
+        }
+        .youtube-icon{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .facebook-icon{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .book-icon{
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #60a5fa;
+        }
+        .users-icon{
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #a855f7;
+        }
+        .file-text-icon{
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #34d399;
+        }
+        .mail-icon{
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #fcd34d;
+        }
+        .chevron-right{
+            width: 1rem;
+            height: 1rem;
+            margin-left: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Welcome to My Website</h1>
+            <p>I am a Professor dedicated to teaching mathematics, conducting research, and sharing knowledge. Explore my courses, publications, and resources.</p>
+            <div>
+                <a href="https://www.youtube.com/" target="_blank" class="button red-button">
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube youtube-icon"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="M10 15V9l5 3-5 3z"/></svg>
+                    YouTube Channel
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="button blue-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook facebook-icon"><path d="M18 2h-3a5 5 0 0 0-5 5v3H6v4h4v12h6V14h4l1-5h-5V7a1 1 0 0 1 1-1h3z"/></svg>
+                    Facebook
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="grid-container">
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book book-icon"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M11 4v16"/><path d="M15 4v16"/></svg>
+                        Math Courses
+                    </h2>
+                    <p class="card-description">Explore the mathematics courses I teach.</p>
+                </div>
+                <div class="card-content">
+                    <p>My courses cover a wide range of topics, including:</p>
+                    <ul>
+                        <li>Calculus I-III</li>
+                        <li>Linear Algebra</li>
+                        <li>Differential Equations</li>
+                        <li>Abstract Algebra</li>
+                        <li>Real Analysis</li>
+                         {/* Add more courses as needed */}
+                    </ul>
+                    <a href="#" class="outline-button blue-outline">
+                        View Courses
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users users-icon"><path d="M15 18v-6a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v6"/><path d="M9 6a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/><path d="M17 6a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/><path d="M22 18v-7a4 4 0 0 0-4-4h-2"/><path d="M16 13a4 4 0 0 1 4 4"/></svg>
+                        Research
+                    </h2>
+                    <p class="card-description">My research interests and publications.</p>
+                </div>
+                <div class="card-content">
+                    <p>My research focuses on:</p>
+                    <ul>
+                        <li>Algebraic Geometry</li>
+                        <li>Number Theory</li>
+                        <li>Category Theory</li>
+                         {/* Add research areas */}
+                    </ul>
+                    <a href="#" class="outline-button purple-outline">
+                        View Publications
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </section>
+
+            <section class="card col-span-1">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text file-text-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6l6 6H14z"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                        Curriculum Vitae
+                    </h2>
+                    <p class="card-description">My CV, including education, experience, and publications.</p>
+                </div>
+                <div class="card-content">
+                    <p>Download my complete CV.</p>
+                    <a href="#" class="outline-button green-outline">
+                        Download CV
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </section>
+
+            <section class="card col-span-1">
+                <div class="card-header">
+                    <h2 class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mail-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                        Contact Me
+                    </h2>
+                    <p class="card-description">Get in touch with me.</p>
+                </div>
+                <div class="card-content">
+                    <p>Email: example@email.com</p>
+                    <p>Phone: +123 456 7890</p>
+                    <a href="#" class="outline-button yellow-outline">
+                        Contact
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© {new Date().getFullYear()} Professor Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
